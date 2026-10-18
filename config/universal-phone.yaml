@@ -12,13 +12,15 @@ platforms:
   native_hal: true
 
 hardware:
-  max_ram_gib: 256
+  ram_gib: 6
+  max_ram_gib: 6
   storage_gib: 1024
   display:
     width: 1080
     height: 2400
     refresh_hz: 120
   memory:
+    capacity_gib: 6
     family: LPDDR
     prototype_generations: [LPDDR4X, LPDDR5, LPDDR5X, LPDDR6, LPDDR7, LPDDR8, LPDDR9]
 
