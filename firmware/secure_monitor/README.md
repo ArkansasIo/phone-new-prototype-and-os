@@ -1,0 +1,5 @@
+# firmware/secure_monitor
+
+This directory defines the scope and integration boundary for the firmware/secure_monitor subsystem in Phone New Prototype and OS.
+
+Implementation must be based on the selected SoC, supported board design, vendor documentation, and verified interface specifications. This placeholder is not a functional device driver or firmware image.
