@@ -1,8 +1,8 @@
 {
   "project": "Phone New Prototype and OS",
   "architecture": "ARM64-class smartphone reference",
-  "ram_gib": 256,
-  "ram_status": "experimental logical capacity target; actual SoC/package support required",
+  "ram_gib": 6,
+  "ram_status": "6 GiB reference configuration; actual SoC/package support required",
   "memory_family": "LPDDR research model",
   "storage": {
     "type": "UFS",
