@@ -1,0 +1,41 @@
+project:
+  name: UniversalPhoneOS
+  version: 0.1.0-prototype
+  language: Kotlin
+  architecture: Kotlin-Multiplatform
+  package: io.arkansas.universalphone
+
+platforms:
+  android: true
+  ios_class: true
+  jvm_prototype: true
+  native_hal: true
+
+hardware:
+  max_ram_gib: 256
+  storage_gib: 1024
+  display:
+    width: 1080
+    height: 2400
+    refresh_hz: 120
+  memory:
+    family: LPDDR
+    prototype_generations: [LPDDR4X, LPDDR5, LPDDR5X, LPDDR6, LPDDR7, LPDDR8, LPDDR9]
+
+security:
+  secure_boot: true
+  verified_boot: true
+  encryption: true
+  hardware_keys: true
+  debug_default: false
+
+features:
+  camera: true
+  cellular: true
+  wifi: true
+  bluetooth: true
+  nfc: true
+  gnss: true
+  biometrics: true
+  desktop_mode: false
+  experimental_hardware: false
