@@ -1,0 +1,95 @@
+{
+  "compute": [
+    "SoC",
+    "CPU clusters",
+    "GPU",
+    "NPU",
+    "ISP",
+    "video codec",
+    "display engine",
+    "security engine",
+    "memory controller",
+    "LPDDR PHY"
+  ],
+  "memory": [
+    "LPDDR package",
+    "memory training firmware",
+    "optional ECC",
+    "IOMMU"
+  ],
+  "storage": [
+    "UFS controller",
+    "UFS flash",
+    "secure boot partitions",
+    "encrypted userdata"
+  ],
+  "display": [
+    "OLED/LTPO or LCD",
+    "display driver IC",
+    "touch digitizer",
+    "touch controller"
+  ],
+  "imaging": [
+    "front camera",
+    "rear wide camera",
+    "ultrawide camera",
+    "telephoto camera",
+    "optional depth sensor",
+    "OIS",
+    "flash LED"
+  ],
+  "wireless": [
+    "cellular modem",
+    "RF transceiver",
+    "PA",
+    "LNA",
+    "filters",
+    "duplexers",
+    "antenna switches",
+    "Wi-Fi",
+    "Bluetooth",
+    "GNSS",
+    "NFC",
+    "optional UWB"
+  ],
+  "audio": [
+    "audio codec",
+    "ADC/DAC",
+    "microphones",
+    "speaker amplifier",
+    "speakers",
+    "haptic driver"
+  ],
+  "sensors": [
+    "accelerometer",
+    "gyroscope",
+    "magnetometer",
+    "barometer",
+    "ambient light",
+    "proximity",
+    "temperature",
+    "Hall",
+    "fingerprint",
+    "optional face depth"
+  ],
+  "power": [
+    "battery",
+    "battery protection",
+    "charger",
+    "fuel gauge",
+    "PMIC",
+    "buck converters",
+    "LDOs",
+    "USB-C controller",
+    "wireless charging receiver"
+  ],
+  "mechanical": [
+    "multilayer PCB",
+    "flex PCB",
+    "chassis",
+    "shielding",
+    "thermal spreader",
+    "connectors",
+    "antenna structures"
+  ]
+}
