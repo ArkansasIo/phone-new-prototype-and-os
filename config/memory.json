@@ -1,5 +1,6 @@
 {
-  "max_modeled_capacity_gib": 256,
+  "max_modeled_capacity_gib": 6,
+  "target_capacity_gib": 6,
   "unit": "GiB",
   "implemented_standards": [
     "Mobile DDR",
@@ -14,5 +15,5 @@
     "LPDDR8",
     "LPDDR9"
   ],
-  "note": "Future generations and their numeric data rates in this repository are model assumptions, not official specifications."
+  "note": "The phone prototype target is 6 GiB RAM. Future generations and their numeric data rates in this repository are model assumptions, not official specifications."
 }
