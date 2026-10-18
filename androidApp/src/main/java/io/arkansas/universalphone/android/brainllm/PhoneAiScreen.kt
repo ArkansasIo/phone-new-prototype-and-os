@@ -10,7 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
@@ -27,9 +27,7 @@ import io.arkansas.universalphone.brainllm.AiApiResponse
 import io.arkansas.universalphone.brainllm.PhoneAiApi
 
 @Composable
-fun PhoneAiScreen(
-    api: PhoneAiApi = remember { PhoneAiApi() }
-) {
+fun PhoneAiScreen(api: PhoneAiApi = remember { PhoneAiApi() }) {
     var prompt by remember { mutableStateOf("") }
     var response by remember { mutableStateOf<AiApiResponse?>(null) }
     var running by remember { mutableStateOf(false) }
@@ -81,12 +79,10 @@ fun PhoneAiScreen(
                 )
                 Button(
                     enabled = running && prompt.isNotBlank(),
-                    onClick = {
-                        response = api.handle(AiApiRequest("chat", prompt, maxTokens = 128))
-                    }
+                    onClick = { response = api.handle(AiApiRequest("chat", prompt, maxTokens = 128)) }
                 ) { Text("Run inference") }
                 response?.result?.let {
-                    Divider()
+                    HorizontalDivider()
                     Text("Output", style = MaterialTheme.typography.titleMedium)
                     Text(it.output)
                     Text("Confidence: ${"%.3f".format(it.confidence)}")
@@ -99,23 +95,27 @@ fun PhoneAiScreen(
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Sandbox permissions", style = MaterialTheme.typography.titleLarge)
-                PermissionRow("Network", network) {
-                    network = it
-                    response = api.handle(AiApiRequest("permission", "network=$it"))
+                PermissionRow("Network", network) { value ->
+                    val result = api.handle(AiApiRequest("permission", "network=$value"))
+                    response = result
+                    if (result.ok) network = value
                 }
-                PermissionRow("Files", files) {
-                    files = it
-                    response = api.handle(AiApiRequest("permission", "files=$it"))
+                PermissionRow("Files", files) { value ->
+                    val result = api.handle(AiApiRequest("permission", "files=$value"))
+                    response = result
+                    if (result.ok) files = value
                 }
-                PermissionRow("Microphone", microphone) {
-                    microphone = it
-                    response = api.handle(AiApiRequest("permission", "microphone=$it"))
+                PermissionRow("Microphone", microphone) { value ->
+                    val result = api.handle(AiApiRequest("permission", "microphone=$value"))
+                    response = result
+                    if (result.ok) microphone = value
                 }
-                PermissionRow("Camera", camera) {
-                    camera = it
-                    response = api.handle(AiApiRequest("permission", "camera=$it"))
+                PermissionRow("Camera", camera) { value ->
+                    val result = api.handle(AiApiRequest("permission", "camera=$value"))
+                    response = result
+                    if (result.ok) camera = value
                 }
-                Text("Permissions are additionally constrained by the sandbox policy. OS permissions are not granted automatically.")
+                Text("The sandbox policy must allow a capability before it can be enabled. Android OS permissions are not granted automatically.")
             }
         }
 
