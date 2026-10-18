@@ -1,6 +1,6 @@
-# 256 GiB Memory Target
+# 6 GiB Memory Target
 
-The project may model 256 GiB of addressable memory in software. That configuration is a research target and does not imply a commercially available phone memory package or support from a current smartphone SoC.
+The UniversalPhoneOS reference phone profile targets **6 GiB of RAM**. This is a software/hardware reference configuration and does not by itself validate a commercial SoC, DRAM package, or memory controller.
 
 A physical design would need:
 
@@ -12,4 +12,4 @@ A physical design would need:
 - signal/power integrity validation
 - OS physical-memory discovery and IOMMU configuration
 
-DDR6–DDR9 and LPDDR6–LPDDR9 are experimental labels in this project unless a future, official specification is independently confirmed.
+The active prototype configuration uses 6 GiB RAM. DDR6–DDR9 and LPDDR6–LPDDR9 remain experimental labels in this project unless an official specification is independently confirmed.
