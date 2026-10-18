@@ -1,0 +1,3 @@
+package io.arkansas.universalphone.brainllm
+
+class BrainEngine(val graph: NeuralGraph = NeuralGraph(), val memory: BrainMemory = BrainMemory(), val tokenizer: BrainTokenizer = BrainTokenizer(), val learning: NeuralLearning = NeuralLearning()) { fun infer(r: BrainInferenceRequest): BrainInferenceResult { val t = tokenizer.encode(r.input).take(r.maxTokens.coerceAtLeast(1)); memory.remember(r.input); val a = mutableListOf<String>(); t.forEachIndexed { i, x -> val id = "token:$i"; if (graph.node(id) != null && graph.activate(id, x.vector.average()) > 0.0) a += id }; return BrainInferenceResult(tokenizer.decode(t), t, if (t.isEmpty()) 0.0 else (a.size.toDouble() / t.size).coerceIn(0.0, 1.0), a) } }

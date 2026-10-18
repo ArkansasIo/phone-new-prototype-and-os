@@ -1,0 +1,3 @@
+package io.arkansas.universalphone.brainllm
+
+class BrainSandbox(private val maxNodes: Int = 10000, private val maxSynapses: Int = 50000) { val graph = NeuralGraph(); var enabled = true; fun addNode(n: NeuralNode): Result<Unit> { if (!enabled) return Result.failure(IllegalStateException("Sandbox disabled")); if (graph.nodes().size >= maxNodes) return Result.failure(IllegalStateException("Node limit reached")); return graph.addNode(n) }; fun addSynapse(s: NeuralSynapse): Result<Unit> { if (!enabled) return Result.failure(IllegalStateException("Sandbox disabled")); if (graph.synapses().size >= maxSynapses) return Result.failure(IllegalStateException("Synapse limit reached")); return graph.addSynapse(s) } }

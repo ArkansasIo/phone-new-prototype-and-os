@@ -1,0 +1,3 @@
+package io.arkansas.universalphone.brainllm
+
+class BrainNodeNetwork { val input = NeuralGraph(); val processing = NeuralGraph(); val memory = NeuralGraph(); val output = NeuralGraph(); private val links = mutableListOf<BridgeLink>(); fun connect(source: NeuralGraph, sourceId: String, target: NeuralGraph, targetId: String, weight: Double): Result<Unit> { if (source.node(sourceId) == null || target.node(targetId) == null) return Result.failure(IllegalArgumentException("Both nodes must exist")); links += BridgeLink(sourceId, targetId, weight); return Result.success(Unit) }; fun bridgeLinks() = links.toList(); data class BridgeLink(val sourceId: String, val targetId: String, val weight: Double) }
