@@ -1,0 +1,20 @@
+{
+  "display": "MIPI DSI-class",
+  "cameras": "MIPI CSI-class",
+  "memory": "dedicated LPDDR PHY",
+  "storage": "UFS/M-PHY-class",
+  "sensors": [
+    "I2C",
+    "SPI",
+    "GPIO",
+    "ADC as required"
+  ],
+  "audio": [
+    "I2S",
+    "SLIMbus-class"
+  ],
+  "radios": [
+    "PCIe/SDIO/USB dependent on selected chipset"
+  ],
+  "usb": "USB-C; data and power features depend on controller and SoC"
+}
