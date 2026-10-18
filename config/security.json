@@ -1,0 +1,10 @@
+{
+  "secure_boot": true,
+  "verified_boot": true,
+  "rollback_protection": true,
+  "storage_encryption": true,
+  "hardware_key_store": true,
+  "application_sandboxing": true,
+  "production_debug_disabled_by_default": true,
+  "signing_keys_in_repository": false
+}
