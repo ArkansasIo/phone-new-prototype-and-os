@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.arkansas.universalphone.PhoneConfig
 import io.arkansas.universalphone.UniversalPhoneRuntime
 import io.arkansas.universalphone.android.brainllm.PhoneAiScreen
 
@@ -33,6 +34,7 @@ private fun UniversalPhoneApp() {
     var selectedTab by remember { mutableIntStateOf(0) }
     val runtime = remember { UniversalPhoneRuntime() }
     val boot = remember { runtime.boot() }
+    val config = remember { PhoneConfig() }
 
     MaterialTheme {
         Surface(Modifier.fillMaxSize()) {
@@ -48,7 +50,15 @@ private fun UniversalPhoneApp() {
                     }
                 }
                 when (selectedTab) {
-                    0 -> UniversalPhoneHome(boot.osName, boot.version, boot.secureBoot, boot.developerMode)
+                    0 -> UniversalPhoneHome(
+                        modelName = config.modelName,
+                        osName = boot.osName,
+                        version = boot.version,
+                        ramGiB = config.maxRamGiB,
+                        storageGiB = config.storageGiB,
+                        secureBoot = boot.secureBoot,
+                        developerMode = boot.developerMode
+                    )
                     1 -> PhoneAiScreen()
                 }
             }
@@ -58,14 +68,20 @@ private fun UniversalPhoneApp() {
 
 @Composable
 private fun UniversalPhoneHome(
+    modelName: String,
     osName: String,
     version: String,
+    ramGiB: Int,
+    storageGiB: Int,
     secureBoot: Boolean,
     developerMode: Boolean
 ) {
     Column(Modifier.fillMaxSize().padding(24.dp)) {
-        Text(osName, style = MaterialTheme.typography.headlineMedium)
+        Text(modelName, style = MaterialTheme.typography.headlineMedium)
+        Text(osName)
         Text("Version $version")
+        Text("RAM: ${ramGiB} GiB")
+        Text("Storage: ${storageGiB} GiB")
         Text("Secure Boot: ${if (secureBoot) "enabled" else "disabled"}")
         Text("Developer Mode: ${if (developerMode) "enabled" else "disabled"}")
     }
