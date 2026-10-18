@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root-change-me
+      MYSQL_DATABASE: universal_phone
+      MYSQL_USER: phone
+      MYSQL_PASSWORD: change-me
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./backend/sql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "phone", "-pchange-me"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 8080
+      MYSQL_URL: jdbc:mysql://mysql:3306/universal_phone
+      MYSQL_USER: phone
+      MYSQL_PASSWORD: change-me
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql-data:

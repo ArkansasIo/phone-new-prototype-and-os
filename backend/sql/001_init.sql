@@ -1,0 +1,32 @@
+-- UniversalPhoneOS MySQL schema
+CREATE DATABASE IF NOT EXISTS universal_phone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'phone'@'%' IDENTIFIED BY 'change-me';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX ON universal_phone.* TO 'phone'@'%';
+USE universal_phone;
+
+CREATE TABLE IF NOT EXISTS devices (
+  id VARCHAR(64) PRIMARY KEY,
+  model VARCHAR(128) NOT NULL,
+  os_version VARCHAR(32) NOT NULL,
+  created_at BIGINT NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS device_settings (
+  device_id VARCHAR(64) NOT NULL,
+  setting_key VARCHAR(128) NOT NULL,
+  setting_value TEXT NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (device_id, setting_key),
+  CONSTRAINT fk_settings_device FOREIGN KEY (device_id) REFERENCES devices(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS software_updates (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  version VARCHAR(32) NOT NULL,
+  channel VARCHAR(32) NOT NULL,
+  package_url TEXT NOT NULL,
+  sha256 CHAR(64) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_update (version, channel)
+);

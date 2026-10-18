@@ -1,20 +1,2 @@
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
 rootProject.name = "UniversalPhoneOS"
-include(":shared")
-include(":androidApp")
-include(":prototype")
+include(":shared", ":prototype", ":androidApp", ":backend")
