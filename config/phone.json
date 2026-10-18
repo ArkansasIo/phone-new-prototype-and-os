@@ -1,0 +1,38 @@
+{
+  "project": "Phone New Prototype and OS",
+  "architecture": "ARM64-class smartphone reference",
+  "ram_gib": 256,
+  "ram_status": "experimental logical capacity target; actual SoC/package support required",
+  "memory_family": "LPDDR research model",
+  "storage": {
+    "type": "UFS",
+    "capacity_gib": 1024
+  },
+  "display": {
+    "type": "OLED/LTPO or LCD",
+    "touch": true
+  },
+  "wireless": [
+    "cellular via vendor modem",
+    "Wi-Fi",
+    "Bluetooth",
+    "GNSS",
+    "NFC",
+    "optional UWB"
+  ],
+  "connectors": [
+    "USB-C"
+  ],
+  "security": [
+    "secure boot",
+    "verified boot",
+    "hardware-backed key storage",
+    "storage encryption",
+    "app sandboxing"
+  ],
+  "software_targets": [
+    "Android-class via AOSP/vendor BSP",
+    "independent iOS-class architecture"
+  ],
+  "disclaimer": "Research configuration, not a validated physical bill of materials."
+}
