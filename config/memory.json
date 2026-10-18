@@ -1,0 +1,18 @@
+{
+  "max_modeled_capacity_gib": 256,
+  "unit": "GiB",
+  "implemented_standards": [
+    "Mobile DDR",
+    "LPDDR2",
+    "LPDDR3",
+    "LPDDR4/4X",
+    "LPDDR5/5X"
+  ],
+  "experimental_placeholders": [
+    "LPDDR6",
+    "LPDDR7",
+    "LPDDR8",
+    "LPDDR9"
+  ],
+  "note": "Future generations and their numeric data rates in this repository are model assumptions, not official specifications."
+}
