@@ -1,5 +1,7 @@
 package io.arkansas.universalphone.virtualnet
 
+import kotlin.time.Clock
+
 class VirtualNetworkManager {
     private val networks = linkedMapOf<String, VirtualNetwork>()
     private val nics = linkedMapOf<String, VirtualNic>()
@@ -47,12 +49,10 @@ class VirtualNetworkManager {
     }
 
     fun snapshot(): VirtualNetworkSnapshot = VirtualNetworkSnapshot(
-        timestampEpochMs = currentTimeMillis(),
+        timestampEpochMs = Clock.System.now().toEpochMilliseconds(),
         networks = networks.values.toList(),
         nics = nics.values.toList(),
         nodes = nodes.values.toList(),
         routes = routes.toList()
     )
-
-    private fun currentTimeMillis(): Long = kotlin.system.getTimeMillis()
 }
