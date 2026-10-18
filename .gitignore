@@ -1,0 +1,16 @@
+/build/
+/out/
+/.cache/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.img
+*.elf
+*.map
+.vscode/
+.idea/
+.DS_Store
