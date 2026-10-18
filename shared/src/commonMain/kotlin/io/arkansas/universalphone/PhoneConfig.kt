@@ -1,11 +1,11 @@
 package io.arkansas.universalphone
 
 data class PhoneConfig(
-    val modelName: String = "UniversalPhone Prototype",
+    val modelName: String = "UniversalPhone 6G Prototype",
     val osName: String = "UniversalPhoneOS",
     val osVersion: String = "0.1.0",
     val apiLevel: Int = 1,
-    val maxRamGiB: Int = 256,
+    val maxRamGiB: Int = 6,
     val storageGiB: Int = 1024,
     val displayWidth: Int = 1080,
     val displayHeight: Int = 2400,
