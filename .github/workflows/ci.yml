@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: universalphoneos-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cpp-reference-model:
+    name: C++20 reference model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
+
+  kotlin:
+    name: Kotlin modules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Test shared and JVM prototype
+        run: gradle :shared:allTests :prototype:test
+      - name: Build Android debug APK
+        run: gradle :androidApp:assembleDebug
