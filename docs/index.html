@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="UniversalPhoneOS — open phone prototype and operating-system research project.">
+  <title>UniversalPhoneOS</title>
+  <style>
+    :root{color-scheme:dark;--bg:#071018;--panel:#0d1b27;--line:#1d3a4d;--text:#e8f1f5;--muted:#91a9b7;--accent:#49c7ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#10283a 0,#071018 45%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+    .wrap{max-width:1050px;margin:auto;padding:28px 20px 60px}.hero{padding:70px 0 45px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}.hero h1{font-size:clamp(2.5rem,7vw,5rem);line-height:1;margin:12px 0}.hero p{max-width:720px;color:var(--muted);font-size:1.15rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:rgba(13,27,39,.88);border:1px solid var(--line);border-radius:14px;padding:22px}.card h2{margin-top:0}.card p{color:var(--muted)}a{color:var(--accent)}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}.button{display:inline-block;padding:10px 15px;border:1px solid var(--line);border-radius:9px;text-decoration:none;background:#0b1722}.status{margin-top:30px;padding:14px 17px;border-left:3px solid var(--accent);background:#0b1722;color:var(--muted)}footer{margin-top:50px;color:#6f8997;font-size:.9rem}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">ArkansasIo · Phone Platform Research</div>
+    <h1>UniversalPhoneOS</h1>
+    <p>A modular phone prototype and operating-system research platform spanning Android, Kotlin Multiplatform, C++ reference components, hardware abstraction, drivers, firmware, applications, and backend services.</p>
+    <div class="links">
+      <a class="button" href="https://github.com/ArkansasIo/phone-new-prototype-and-os">GitHub Repository</a>
+      <a class="button" href="https://github.com/ArkansasIo/phone-new-prototype-and-os/actions">Build & CI</a>
+      <a class="button" href="https://github.com/ArkansasIo/phone-new-prototype-and-os/tree/main/docs">Documentation</a>
+    </div>
+  </section>
+  <section class="grid">
+    <article class="card"><h2>OS Core</h2><p>Shared runtime and platform abstractions intended to keep core phone behavior portable across implementations.</p></article>
+    <article class="card"><h2>Android</h2><p>Android application layer for exercising the UniversalPhoneOS runtime on conventional devices.</p></article>
+    <article class="card"><h2>Hardware</h2><p>HAL, driver, firmware, and prototype directories provide the foundation for future custom-phone hardware work.</p></article>
+    <article class="card"><h2>Reference Model</h2><p>C++20 components provide a deterministic reference implementation for low-level behavior and testing.</p></article>
+    <article class="card"><h2>Applications</h2><p>Prototype application surfaces can be developed independently while sharing platform services.</p></article>
+    <article class="card"><h2>CI</h2><p>GitHub Actions validates the C++ model, Kotlin tests, and Android debug build on every main-branch change.</p></article>
+  </section>
+  <div class="status"><strong>Development status:</strong> research prototype. A successful software build does not imply production phone hardware, modem certification, or device certification.</div>
+  <footer>UniversalPhoneOS · ArkansasIo · Open development prototype</footer>
+</main>
+</body>
+</html>
